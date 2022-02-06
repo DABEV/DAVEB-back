@@ -1,24 +1,54 @@
 package mx.edu.utez.davebback.entity;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.NumberFormat;
+
+import mx.edu.utez.davebback.validator.DescriptionFormat;
+import mx.edu.utez.davebback.validator.NameFormat;
+import mx.edu.utez.davebback.validator.ParagraphFormat;
+
 public class Beca {
     
     private long id;
+
+    @NotBlank
+    @NotNull
+    @DescriptionFormat
     private String nombre;
-    private String descripción;
+
+    @NotBlank
+    @NotNull
+    @ParagraphFormat
+    private String descripcion;
+
+    @NotNull
+    @Max(10000)
+    @NumberFormat(pattern = "#####.##")
     private double monto;
+
+    @NotBlank
+    @NotNull
+    @NameFormat
     private String periodo;
-    private String institución;
+
+    @NotBlank
+    @NotNull
+    @NameFormat
+    private String institucion;
 
     public Beca() {
     }
 
-    public Beca(long id, String nombre, String descripción, double monto, String periodo, String institución) {
+    public Beca(long id, String nombre, String descripcion, double monto, String periodo, String institucion) {
         this.id = id;
         this.nombre = nombre;
-        this.descripción = descripción;
+        this.descripcion = descripcion;
         this.monto = monto;
         this.periodo = periodo;
-        this.institución = institución;
+        this.institucion = institucion;
     }
 
     public long getId() {
@@ -37,12 +67,12 @@ public class Beca {
         this.nombre = nombre;
     }
 
-    public String getDescripción() {
-        return descripción;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setDescripción(String descripción) {
-        this.descripción = descripción;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public double getMonto() {
@@ -61,12 +91,12 @@ public class Beca {
         this.periodo = periodo;
     }
 
-    public String getInstitución() {
-        return institución;
+    public String getInstitucion() {
+        return institucion;
     }
 
-    public void setInstitución(String institución) {
-        this.institución = institución;
+    public void setInstitucion(String institucion) {
+        this.institucion = institucion;
     }    
 }
 
