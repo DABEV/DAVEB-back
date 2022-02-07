@@ -9,6 +9,14 @@ public class EmailFormatValidator implements ConstraintValidator<EmailFormat, St
 
     @Override
     public boolean isValid(String email, ConstraintValidatorContext context) {
-        return email.matches(PATTERN_EMAIL);
+        boolean isValid = false;
+        
+        try {
+            isValid = email.matches(PATTERN_EMAIL);
+        } catch (Exception e) {
+            isValid = false;
+        }
+
+        return isValid;
     }
 }

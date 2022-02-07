@@ -9,6 +9,14 @@ public class PhoneNumberFormatValidator implements ConstraintValidator<PhoneNumb
 
     @Override
     public boolean isValid(String phoneNumber, ConstraintValidatorContext context) {
-        return phoneNumber.matches(PATTERN_PHONE);
+        boolean isValid = false;
+        
+        try {
+            isValid = phoneNumber.matches(PATTERN_PHONE);
+        } catch (Exception e) {
+            isValid = false;
+        }
+
+        return isValid;
     }
 }

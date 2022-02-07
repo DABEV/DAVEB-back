@@ -6,17 +6,17 @@ import java.util.regex.Pattern;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class DescriptionFormatValidator implements ConstraintValidator<DescriptionFormat, String> {
-    
-    private final String PATTERN_DESCRIPTION = "[^À-ÿñÑA-Za-z0-9\\s]+";
+public class MatriculaFormatValidator implements ConstraintValidator<MatriculaFormat, String>{
+
+    private final String PATTERN_MATRICULA = "[^A-Z0-9]+";
 
     @Override
-    public boolean isValid(String description, ConstraintValidatorContext context) {
+    public boolean isValid(String matricula, ConstraintValidatorContext context) {
         boolean isValid = false;
         
         try {
-            Pattern pattern = Pattern.compile(PATTERN_DESCRIPTION);
-            Matcher matcher = pattern.matcher(description);
+            Pattern pattern = Pattern.compile(PATTERN_MATRICULA);
+            Matcher matcher = pattern.matcher(matricula);
             isValid = getCountInvalidChars(matcher) == 0;
         } catch (Exception e) {
             isValid = false;
