@@ -2,22 +2,45 @@ package mx.edu.utez.davebback.entity;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 import mx.edu.utez.davebback.validator.EmailFormat;
+import mx.edu.utez.davebback.validator.PhoneNumberFormat;
 
 public class Estudiante {
     private long id;
+
+    @NotBlank
     private String nombre;
+
+    @NotBlank
     private String primerApellido;
+    
+    @NotBlank
     private String segundoApellido;
+    
+    @NotNull
     private Date fechaNacimiento;
+    
+    @NotBlank
     private String matricula;
+    
+    @NotBlank
     private String gradoEstudio;
+    
+    @NotBlank
     private String escuela;
+
+    @NotBlank
+    @PhoneNumberFormat
     private String telefono;
     
+    @NotBlank
     @EmailFormat
     private String correo;
     
+    @NotBlank
     private String beca;
 
     public Estudiante() {

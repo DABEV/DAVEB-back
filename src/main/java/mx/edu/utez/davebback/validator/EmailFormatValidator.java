@@ -1,7 +1,5 @@
 package mx.edu.utez.davebback.validator;
 
-import java.util.regex.Pattern;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
@@ -11,6 +9,6 @@ public class EmailFormatValidator implements ConstraintValidator<EmailFormat, St
 
     @Override
     public boolean isValid(String email, ConstraintValidatorContext context) {
-        return Pattern.matches(PATTERN_EMAIL, email);
+        return email.matches(PATTERN_EMAIL);
     }
 }

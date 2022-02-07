@@ -10,11 +10,11 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 @Documented
-@Constraint(validatedBy = EmailFormatValidator.class)
+@Constraint(validatedBy = PhoneNumberFormatValidator.class)
 @Target({ ElementType.METHOD, ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface EmailFormat {
-    String message() default "El formato del campo correo es incorrecto";
+public @interface PhoneNumberFormat {
+    String message() default "El formato del campo teléfono es incorrecto";
 
     Class<?>[] groups() default {};
 

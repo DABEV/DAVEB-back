@@ -1,5 +1,8 @@
 package mx.edu.utez.davebback.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.validation.BindingResult;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import mx.edu.utez.davebback.entity.ErrorCode;
 import mx.edu.utez.davebback.entity.Estudiante;
 import mx.edu.utez.davebback.entity.Response;
 
@@ -17,28 +21,19 @@ import mx.edu.utez.davebback.entity.Response;
 @RequestMapping("/estudiante")
 public class EstudianteController {    
 
-    private Response response ;
+    private List<Response> listResponse;
 
     @PostMapping("/registrar")
     @ResponseBody
-    public Response registrar (@Valid @RequestBody Estudiante estudiante, BindingResult result) {
-        response = new Response();
+    public List<Response> registrar (@Valid @RequestBody Estudiante estudiante, BindingResult result) {
+        listResponse = new ArrayList<>();
 
         if (result.hasErrors()) {
-            for (FieldError error : result.getFieldErrors() ) {
-                System.out.println (error.getObjectName() + " - " + error.getDefaultMessage() + " - " + error.getCode());
-            }
-            
-            response.setEstatus(2000);
-            response.setTítulo("Titulo de mensaje");
-            response.setMensaje("Hubo un error");
-
+            listResponse = ErrorCode.mapResponseErrorsFields(result.getFieldErrors());
         } else {
-            response.setEstatus(2000);
-            response.setTítulo("Titulo de mensaje correcto");
-            response.setMensaje("Anda GOD");
+            listResponse.add(new Response(4001, "Éxito", "Se ha realizado la acción correctamente"));
         }
 
-        return response;
+        return listResponse;
     }
 }
