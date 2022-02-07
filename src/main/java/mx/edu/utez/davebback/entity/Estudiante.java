@@ -34,7 +34,6 @@ public class Estudiante {
     private String segundoApellido;
     
     @NotNull
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date fechaNacimiento;
     
     @Size(max = 15)
