@@ -45,6 +45,7 @@ public class ErrorCode {
                 
                 // 2002 - Error de caracteres
                 case "DescriptionFormat":
+                case "MatriculaFormat":
                 case "ParagraphFormat":
                 case "NameFormat":
                     key = 2002;
@@ -52,6 +53,8 @@ public class ErrorCode {
                     break;
 
                 // 2004 - Formato inválido
+                case "Size":
+                case "DateTimeFormat":
                 case "EmailFormat":
                 case "PhoneNumberFormat":
                     key = 2004;

@@ -4,35 +4,56 @@ import java.util.Date;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import mx.edu.utez.davebback.validator.DescriptionFormat;
 import mx.edu.utez.davebback.validator.EmailFormat;
+import mx.edu.utez.davebback.validator.MatriculaFormat;
+import mx.edu.utez.davebback.validator.NameFormat;
+import mx.edu.utez.davebback.validator.ParagraphFormat;
 import mx.edu.utez.davebback.validator.PhoneNumberFormat;
 
 public class Estudiante {
     private long id;
 
     @NotBlank
+    @NotNull
+    @Size(max = 45)
+    @NameFormat
     private String nombre;
 
     @NotBlank
+    @Size(max = 45)
+    @NameFormat
     private String primerApellido;
     
-    @NotBlank
+    @Size(max = 45)
+    @NameFormat
     private String segundoApellido;
     
     @NotNull
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date fechaNacimiento;
     
+    @Size(max = 15)
     @NotBlank
+    @MatriculaFormat
     private String matricula;
     
     @NotBlank
+    @Size(max = 45)
+    @NameFormat
     private String gradoEstudio;
     
     @NotBlank
+    @Size(max = 150)
+    @ParagraphFormat
     private String escuela;
 
     @NotBlank
+    @Size(min = 10, max = 20)
     @PhoneNumberFormat
     private String telefono;
     
@@ -41,6 +62,8 @@ public class Estudiante {
     private String correo;
     
     @NotBlank
+    @Size(max = 50)
+    @DescriptionFormat
     private String beca;
 
     public Estudiante() {
