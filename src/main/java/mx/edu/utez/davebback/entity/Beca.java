@@ -3,6 +3,7 @@ package mx.edu.utez.davebback.entity;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.NumberFormat;
 
@@ -17,11 +18,13 @@ public class Beca {
     @NotBlank
     @NotNull
     @DescriptionFormat
+    @Size(max = 45)
     private String nombre;
 
     @NotBlank
     @NotNull
     @ParagraphFormat
+    @Size(max = 150)
     private String descripcion;
 
     @NotNull
@@ -32,11 +35,13 @@ public class Beca {
     @NotBlank
     @NotNull
     @NameFormat
+    @Size(max = 45)
     private String periodo;
 
     @NotBlank
     @NotNull
     @NameFormat
+    @Size(max = 45)
     private String institucion;
 
     public Beca() {
