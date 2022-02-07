@@ -6,6 +6,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import mx.edu.utez.davebback.entity.ErrorCode;
 import mx.edu.utez.davebback.entity.Response;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/beca")
 public class BecaController {
 
