@@ -39,6 +39,7 @@ public class ErrorCode {
                 // 2001 - Datos requeridos
                 case "NotNull":
                 case "NotBlank":
+                case "Min":
                     key = 2001;
                     response = new Response( key, "Datos requeridos", "Uno o más campos requeridos se enviaron vacíos." );
                     break;
