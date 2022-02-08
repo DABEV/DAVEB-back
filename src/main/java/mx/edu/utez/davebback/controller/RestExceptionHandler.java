@@ -12,6 +12,7 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import mx.edu.utez.davebback.entity.ErrorCode;
@@ -24,8 +25,6 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers,
             HttpStatus status, WebRequest request) {
 
-        System.out.println("Estoy en la excepcion de handleMethodArgumentNotValid");
-        
         List<Response> errorList = ErrorCode.mapResponseErrorsFields(ex.getBindingResult().getFieldErrors());
             
         return new ResponseEntity<>(errorList, HttpStatus.BAD_REQUEST);
@@ -34,11 +33,20 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     @Override
     protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex,
             HttpHeaders headers, HttpStatus status, WebRequest request) {
-        System.out.println("Estoy en la excepcion de handleHttpMessageNotReadable");
 
         List<Response> errorList = new ArrayList<>();
         errorList.add(new Response( 2005, "Error en el envío", "Favor de verificar los datos." ));
             
         return new ResponseEntity<>(errorList, HttpStatus.BAD_REQUEST);
+    }
+    
+    @Override
+    protected ResponseEntity<Object> handleNoHandlerFoundException(NoHandlerFoundException ex, HttpHeaders headers,
+            HttpStatus status, WebRequest request) {
+
+        List<Response> errorList = new ArrayList<>();
+        errorList.add(new Response( 2003, "No encontrado", "El recurso o petición solicitado no se encontró." ));
+            
+        return new ResponseEntity<>(errorList, HttpStatus.NOT_FOUND);
     }
 }

@@ -58,7 +58,7 @@ public class ErrorCode {
                 case "EmailFormat":
                 case "PhoneNumberFormat":
                     key = 2004;
-                    response = new Response( key, "Formato inválido", "Uno más campos contiene un formato incorrecto." );
+                    response = new Response( key, "Formato inválido", "Uno o más campos contiene un formato incorrecto." );
                     break; 
             }
 

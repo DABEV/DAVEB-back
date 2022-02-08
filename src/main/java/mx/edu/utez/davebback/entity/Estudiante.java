@@ -6,8 +6,6 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import mx.edu.utez.davebback.validator.DescriptionFormat;
 import mx.edu.utez.davebback.validator.EmailFormat;
 import mx.edu.utez.davebback.validator.MatriculaFormat;
@@ -34,7 +32,6 @@ public class Estudiante {
     private String segundoApellido;
     
     @NotNull
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date fechaNacimiento;
     
     @Size(max = 15)
